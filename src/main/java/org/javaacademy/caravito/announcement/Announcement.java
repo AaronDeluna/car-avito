@@ -1,4 +1,4 @@
-package org.javaacademy.caravito.entity;
+package org.javaacademy.caravito.announcement;
 
 import lombok.Data;
 

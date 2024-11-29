@@ -1,8 +1,8 @@
 package org.javaacademy.caravito.service;
 
-import org.javaacademy.caravito.entity.Announcement;
-import org.javaacademy.caravito.entity.CarBrand;
-import org.javaacademy.caravito.entity.Color;
+import org.javaacademy.caravito.announcement.Announcement;
+import org.javaacademy.caravito.announcement.CarBrand;
+import org.javaacademy.caravito.announcement.Color;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
