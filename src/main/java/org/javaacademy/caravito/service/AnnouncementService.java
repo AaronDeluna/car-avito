@@ -43,10 +43,13 @@ public class AnnouncementService {
 
     public List<Announcement> getByParam(CarBrand brand, Color color, BigDecimal price) {
         return announcementStorage.values().stream()
-                .filter(announcement -> (brand == null || announcement.getBrand() == brand))
-                .filter(announcement -> (color == null || announcement.getColor() == color))
-                .filter(announcement -> (price == null || announcement.getPrice().compareTo(price) == 0))
+                .filter(announcement -> matchesCriteria(announcement, brand, color, price))
                 .toList();
     }
 
+    private boolean matchesCriteria(Announcement announcement, CarBrand brand, Color color, BigDecimal price) {
+        return (brand == null || announcement.getBrand() == brand) &&
+                (color == null || announcement.getColor() == color) &&
+                (price == null || announcement.getPrice().compareTo(price) == 0);
+    }
 }
