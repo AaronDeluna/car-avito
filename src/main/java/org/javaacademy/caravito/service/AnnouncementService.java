@@ -3,6 +3,7 @@ package org.javaacademy.caravito.service;
 import org.javaacademy.caravito.announcement.Announcement;
 import org.javaacademy.caravito.announcement.CarBrand;
 import org.javaacademy.caravito.announcement.Color;
+import org.javaacademy.caravito.dto.SearchAnnouncement;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -41,9 +42,13 @@ public class AnnouncementService {
                 .toList();
     }
 
-    public List<Announcement> getByParam(CarBrand brand, Color color, BigDecimal price) {
+    public List<Announcement> getByParam(SearchAnnouncement searchAnnouncement) {
         return announcementStorage.values().stream()
-                .filter(announcement -> matchesCriteria(announcement, brand, color, price))
+                .filter(announcement -> matchesCriteria(announcement,
+                        searchAnnouncement.getBrand(),
+                        searchAnnouncement.getColor(),
+                        searchAnnouncement.getPrice())
+                )
                 .toList();
     }
 

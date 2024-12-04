@@ -3,7 +3,7 @@ package org.javaacademy.caravito.controller;
 import lombok.RequiredArgsConstructor;
 import org.javaacademy.caravito.announcement.Announcement;
 import org.javaacademy.caravito.announcement.CarBrand;
-import org.javaacademy.caravito.announcement.Color;
+import org.javaacademy.caravito.dto.SearchAnnouncement;
 import org.javaacademy.caravito.service.AnnouncementService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -34,10 +33,9 @@ public class AnnouncementController {
     }
 
     @GetMapping("/param")
-    public List<Announcement> getAnnouncementByParam(@RequestParam(required = false) CarBrand brand,
-                                                     @RequestParam(required = false) Color color,
-                                                     @RequestParam(required = false) BigDecimal price) {
-        return announcementService.getByParam(brand, color, price);
+    public List<Announcement> getAnnouncementByParam(@RequestBody(required = false)
+                                                     SearchAnnouncement searchAnnouncement) {
+        return announcementService.getByParam(searchAnnouncement);
     }
 
     @GetMapping("/brand")
